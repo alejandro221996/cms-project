@@ -1,0 +1,29 @@
+# .gitignore.local.example
+# Copia este archivo como .gitignore.local para tus configuraciones locales específicas
+# Este archivo NO se sube a Git
+
+# Configuraciones personales de desarrollo
+.vscode/settings.json
+.idea/workspace.xml
+
+# Scripts de desarrollo personal
+scripts/my-dev-scripts/
+scripts/personal/
+
+# Bases de datos de desarrollo personal
+*.local.db
+dev-*.sqlite
+
+# Configuraciones de testing personal
+cypress.local.config.js
+jest.local.config.js
+
+# Archivos temporales personales
+TODO.md
+NOTES.md
+scratch/
+playground/
+
+# Configuraciones específicas del desarrollador
+docker-compose.local.yml
+.env.personal
