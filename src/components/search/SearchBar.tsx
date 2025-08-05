@@ -31,7 +31,7 @@ export function SearchBar({
   const [filters, setFilters] = useState<SearchFilters>({})
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false)
   const [isSearching, setIsSearching] = useState(false)
-  const searchTimeout = useRef<NodeJS.Timeout>()
+  const searchTimeout = useRef<NodeJS.Timeout | null>(null)
 
   // Debounced search
   useEffect(() => {

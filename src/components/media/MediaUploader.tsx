@@ -31,37 +31,31 @@ export function MediaUploader({
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([])
   const [isUploading, setIsUploading] = useState(false)
 
-  // Simulated upload for development
-  const startUpload = async (files: File[]) => {
-    setIsUploading(true)
-    try {
-      // Simulate upload delay
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      const newFiles = files.map((file, index) => ({
-        url: URL.createObjectURL(file),
-        name: file.name,
-        size: file.size,
-        type: file.type,
-      }))
-      
-      setUploadedFiles(prev => [...prev, ...newFiles])
-      onUploadComplete?.(newFiles.map(f => f.url))
-    } catch (error) {
-      console.error('Upload error:', error)
-    } finally {
-      setIsUploading(false)
-    }
-  }
-  
   const isUploadThingUploading = false
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       setIsUploading(true)
-      await startUpload(acceptedFiles)
+      try {
+        // Simulate upload delay
+        await new Promise(resolve => setTimeout(resolve, 2000))
+        
+        const newFiles = acceptedFiles.map((file) => ({
+          url: URL.createObjectURL(file),
+          name: file.name,
+          size: file.size,
+          type: file.type,
+        }))
+        
+        setUploadedFiles(prev => [...prev, ...newFiles])
+        onUploadComplete?.(newFiles.map(f => f.url))
+      } catch (error) {
+        console.error('Upload failed:', error)
+      } finally {
+        setIsUploading(false)
+      }
     },
-    [startUpload]
+    [onUploadComplete]
   )
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -82,10 +76,10 @@ export function MediaUploader({
   }
 
   const getFileIcon = (type: string) => {
-    if (type.startsWith('image/')) return <ImageIcon className="h-4 w-4" alt="" />
-    if (type.startsWith('video/')) return <Video className="h-4 w-4" alt="" />
-    if (type === 'application/pdf') return <FileText className="h-4 w-4" alt="" />
-    return <File className="h-4 w-4" alt="" />
+    if (type.startsWith('image/')) return <ImageIcon className="h-4 w-4" />
+    if (type.startsWith('video/')) return <Video className="h-4 w-4" />
+    if (type === 'application/pdf') return <FileText className="h-4 w-4" />
+    return <File className="h-4 w-4" />
   }
 
   const formatFileSize = (bytes: number) => {

@@ -31,10 +31,6 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
     authorEmail: '',
   })
 
-  useEffect(() => {
-    fetchComments()
-  }, [postSlug, fetchComments])
-
   const fetchComments = useCallback(async () => {
     setIsLoading(true)
     try {
@@ -49,6 +45,10 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
       setIsLoading(false)
     }
   }, [postSlug])
+
+  useEffect(() => {
+    fetchComments()
+  }, [fetchComments])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

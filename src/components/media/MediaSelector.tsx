@@ -69,7 +69,7 @@ export function MediaSelector({ onSelect, onClose, isOpen }: MediaSelectorProps)
       <Card className="w-full max-w-4xl max-h-[80vh] overflow-hidden">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
           <CardTitle className="flex items-center gap-2">
-                            <ImageIcon className="h-5 w-5" alt="" />
+                                                         <ImageIcon className="h-5 w-5" />
                 Select Image
           </CardTitle>
           <Button variant="ghost" size="sm" onClick={onClose}>

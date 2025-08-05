@@ -108,24 +108,24 @@ export function ReferrersChart({
     outerRadius?: number
     percentage?: string
   }) => {
-    if (parseFloat(percentage) < 5) return null // No mostrar labels para segmentos pequeños
+    if (!percentage || parseFloat(percentage) < 5) return null // No mostrar labels para segmentos pequeños
     
     const RADIAN = Math.PI / 180
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5
-    const x = cx + radius * Math.cos(-midAngle * RADIAN)
-    const y = cy + radius * Math.sin(-midAngle * RADIAN)
+    const radius = (innerRadius || 0) + ((outerRadius || 0) - (innerRadius || 0)) * 0.5
+    const x = (cx || 0) + radius * Math.cos(-((midAngle || 0) * RADIAN))
+    const y = (cy || 0) + radius * Math.sin(-((midAngle || 0) * RADIAN))
 
     return (
       <text 
         x={x} 
         y={y} 
         fill="white" 
-        textAnchor={x > cx ? 'start' : 'end'} 
+        textAnchor={x > (cx || 0) ? 'start' : 'end'} 
         dominantBaseline="central"
         fontSize={12}
         fontWeight="600"
       >
-        {`${percentage}%`}
+        {`${percentage || '0'}%`}
       </text>
     )
   }
@@ -183,11 +183,6 @@ export function ReferrersChart({
               <Legend 
                 verticalAlign="bottom" 
                 height={36}
-                formatter={(value, entry: { color: string, payload: { percentage: string } }) => (
-                  <span style={{ color: entry.color }}>
-                    {formatReferer(value)} ({entry.payload.percentage}%)
-                  </span>
-                )}
               />
             </PieChart>
           </ResponsiveContainer>

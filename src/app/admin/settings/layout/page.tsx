@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Switch } from '@/components/ui/switch'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Settings, Palette, Navigation, FileText, Plus, Trash2 } from 'lucide-react'
+import { Settings, Navigation, FileText, Plus, Trash2 } from 'lucide-react'
 import { api } from '@/lib/trpc/client'
 
 interface MenuItem {
@@ -200,7 +200,7 @@ export default function LayoutSettingsPage() {
             'Content-Type': 'application/json',
           },
         })
-      } catch (refreshError) {
+      } catch {
         console.log('Session refresh failed, continuing with save...')
       }
 

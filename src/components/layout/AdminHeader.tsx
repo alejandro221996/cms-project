@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { NotificationButton } from '@/components/notifications/NotificationButton'
-import { User, Settings, Bell, Palette, LogOut, Layout } from 'lucide-react'
+import { User, Settings, Bell, Palette, Layout } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,

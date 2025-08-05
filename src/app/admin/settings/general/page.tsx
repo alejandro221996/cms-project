@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Switch } from '@/components/ui/switch'
 import { Separator } from '@/components/ui/separator'
-import { Settings, Globe, Shield, Database, Mail } from 'lucide-react'
+import { Settings, Globe, Database } from 'lucide-react'
 
 export default function GeneralSettingsPage() {
   const [isLoading, setIsLoading] = useState(false)

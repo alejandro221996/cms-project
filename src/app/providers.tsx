@@ -21,7 +21,6 @@ function TRPCProvider({ children }: { children: ReactNode }) {
       links: [
         httpBatchLink({
           url: '/api/trpc',
-          // @ts-expect-error: fetch type mismatch is safe here for credentials
           fetch: ((input: RequestInfo, init?: RequestInit) => {
             return fetch(input, {
               ...init,

@@ -36,7 +36,7 @@ export function DynamicFooter() {
             <div>
               <h3 className="font-semibold mb-4">Enlaces</h3>
               <ul className="space-y-2">
-                {footer.links.map((link, index) => (
+                {footer.links.map((link: { url: string; label: string; external: boolean }, index: number) => (
                   <li key={index}>
                     <Link
                       href={link.url}
@@ -57,7 +57,7 @@ export function DynamicFooter() {
             <div>
               <h3 className="font-semibold mb-4">Redes Sociales</h3>
               <div className="flex gap-4">
-                {footer.socialMedia.map((social, index) => (
+                {footer.socialMedia.map((social: { url: string; platform: string }, index: number) => (
                   <a
                     key={index}
                     href={social.url}

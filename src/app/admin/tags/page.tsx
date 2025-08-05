@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Plus, Hash, Search, Edit, Trash2, FileText } from 'lucide-react'
 import Link from 'next/link'
 import { api } from '@/lib/trpc/client'
-import { Tag } from '@/types'
+import { TagResponse } from '@/types'
 
 function TagsClient() {
   const [search, setSearch] = useState('')
@@ -146,14 +146,14 @@ function TagsClient() {
         </Card>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {tags.map((tag: any) => (
+          {tags.map((tag: TagResponse) => (
             <Card key={tag.id} className="hover:shadow-lg transition-shadow">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div 
                       className="w-4 h-4 rounded-full" 
-                      style={{ backgroundColor: tag.color }}
+                      style={{ backgroundColor: tag.color || '#6b7280' }}
                     />
                     <CardTitle className="text-lg">{tag.name}</CardTitle>
                   </div>

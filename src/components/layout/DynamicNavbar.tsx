@@ -64,7 +64,7 @@ export function DynamicNavbar() {
           
           {navbar.menuItems.length > 0 && (
             <div className="hidden md:flex items-center gap-6">
-              {navbar.menuItems.map((item, index) => (
+              {navbar.menuItems.map((item: { url: string; label: string; external: boolean }, index: number) => (
                 <Link
                   key={index}
                   href={item.url}

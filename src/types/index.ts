@@ -97,9 +97,24 @@ export interface Tag {
   name: string
   slug: string
   description: string | null
-  color: string
+  color: string | null
   createdAt: Date
   updatedAt: Date
+  posts?: Post[]
+  _count?: {
+    posts: number
+  }
+}
+
+// API response type where dates are strings
+export interface TagResponse {
+  id: string
+  name: string
+  slug: string
+  description: string | null
+  color: string | null
+  createdAt: string
+  updatedAt: string
   posts?: Post[]
   _count?: {
     posts: number

@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Plus, FolderOpen, FileText } from 'lucide-react'
 import Link from 'next/link'
 import { api } from '@/lib/trpc/client'
-import { Category } from '@/types'
+// import { Category } from '@/types' // TODO: Remove if not needed
 
 interface CategoryListItem {
   id: string
